@@ -72,10 +72,3 @@ Fork the repo
 Create your branch: git checkout -b feature/foo
 
 Commit your changes
-
-Push and create a PR
-## 🛠 Skills
-React, HTML, Tailwind
-
-
-## Screenshots
