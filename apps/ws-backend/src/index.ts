@@ -1,4 +1,4 @@
-import { WebSocket, WebSocketServer } from 'ws';
+  import { WebSocket, WebSocketServer } from 'ws';
 import jwt, { JwtPayload } from "jsonwebtoken";
 const { JWT_SECRET } =  require('@repo/backend-common/config');
 const { prismaClient } =  require("@repo/db/client");
