@@ -40,7 +40,7 @@ export function Navbar() {
               <Github size={20} />
             </Link>
             <ThemeToggle />
-            <Button>Try Now</Button>
+            <Link href='/signin'><Button>Try Now</Button></Link>
           </div>
           
           <div className="md:hidden flex items-center space-x-4">

@@ -1,9 +1,8 @@
+import AuthPage from "@/components/authPage"
 
 const page = () => {
   return (
-    <div>
-      
-    </div>
+    <AuthPage isSignIn={true}/>
   )
 }
 
