@@ -1,5 +1,6 @@
 "use client";
 import { initDraw } from "@/draw";
+import { WS_URL } from "@/lib/config";
 import {
   Circle,
   Diamond,
@@ -8,12 +9,17 @@ import {
   RectangleHorizontal,
   Square,
 } from "lucide-react";
+import { useParams } from "next/navigation";
 import React, { use, useEffect, useRef, useState } from "react";
 
 const Canvas = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [size, setSize] = useState({ width: 0, height: 0 });
   const [shape, setShape] = useState("rect");
+  const param = useParams();
+  const roomId = param.roomId;
+
+  if(!roomId || typeof roomId !== "string") return;
 
   // Set canvas size after mount
   useEffect(() => {
@@ -23,9 +29,24 @@ const Canvas = () => {
     });
   }, []);
 
+  const [socket, setSocket] = useState<WebSocket | null>(null);
+  useEffect(() => {
+    const ws = new WebSocket(WS_URL)
+
+    ws.onopen = () => {
+      setSocket(ws);
+    }
+  })
+
+  if(!socket){
+    return <div>
+      Connecting to websocket....
+    </div>
+  }
+
   useEffect(() => {
     if (canvasRef.current && size.width > 0 && size.height > 0) {
-      initDraw(canvasRef,shape);
+      initDraw(canvasRef,shape, roomId);
     }
   }, [canvasRef, size, shape]);
 
