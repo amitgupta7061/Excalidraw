@@ -8,6 +8,7 @@ import {
   RectangleEllipsis,
   RectangleHorizontal,
   Square,
+  SquareActivity,
 } from "lucide-react";
 import { useParams } from "next/navigation";
 import React, { use, useEffect, useRef, useState } from "react";
@@ -60,6 +61,7 @@ const Canvas = () => {
             { type: "diamond", icon: <Diamond /> },
             { type: "hexa", icon: <Hexagon /> },
             { type: "square", icon: <Square /> },
+            { type: "square_1", icon: <SquareActivity />}
           ].map(({ type, icon }) => (
             <button
               key={type}
